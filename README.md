@@ -8,9 +8,9 @@ This is useful when Home Assistant's standard `media_player.media_next_track` an
 
 Plex Cast Control provides:
 
+- Proxy media player entities that expose working next/previous buttons to normal Home Assistant media-player cards
 - `plex_cast_control.next`
 - `plex_cast_control.previous`
-- proxy media player entities that expose working next/previous buttons to normal Home Assistant media-player cards
 
 The integration uses the Plex Cast namespace exposed by Chromecast devices running the Plex app.
 
@@ -36,28 +36,16 @@ Restart Home Assistant.
 Then add the integration from the UI:
 
 ```text
-Settings -> Devices & services -> Add integration -> Plex Cast Control
+Settings → Devices & services → Add integration → Plex Cast Control
 ```
 
 Select the source Cast media player entity you want to wrap, then give the proxy a name.
-
-Example source entity:
-
-```text
-media_player.your_cast_device
-```
-
-Example proxy name:
-
-```text
-Living Room Speaker Plex Proxy
-```
 
 You can add multiple entries, one per Cast device or Cast speaker group.
 
 ## Proxy media player
 
-After adding an entry, the integration creates a proxy `media_player` entity.
+After adding an entry through the integration setup flow, Plex Cast Control creates a proxy `media_player` entity.
 
 Use that proxy entity in your dashboard instead of the original Cast entity.
 
@@ -70,11 +58,13 @@ entity: media_player.living_room_speaker_plex_proxy
 
 The proxy entity mirrors the source Cast media player and only adds next/previous support while the source Cast device is running Plex.
 
-When Plex is not active, the proxy does not force Plex-specific next/previous behavior.
+When Plex is not active, the proxy mirrors the source entity's normal supported features and does not force Plex-specific next/previous behavior.
 
 ## Services
 
 The integration also exposes services directly.
+
+These services should target the original Cast media player entity, not the proxy entity.
 
 ### Next
 
@@ -92,14 +82,12 @@ data:
   entity_id: media_player.your_cast_device
 ```
 
-These services should target the original Cast media player entity, not the proxy entity.
-
 ## Previous-track behavior
 
 Plex Cast previous-track behavior is position-aware:
 
-- near the start of a track, previous goes to the previous track
-- later in a track, previous normally restarts the current track
+- Near the start of a track, previous goes to the previous track.
+- Later in a track, previous normally restarts the current track.
 
 This integration accounts for that behavior so the proxy's previous button behaves like a typical previous-track button.
 

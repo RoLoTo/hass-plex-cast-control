@@ -2,9 +2,10 @@
   "domain": "plex_cast_control",
   "name": "Plex Cast Control",
   "version": "0.2.0",
-  "documentation": "https://local",
+  "documentation": "https://github.com/RoLoTo/hass-plex-cast-control",
+  "issue_tracker": "https://github.com/RoLoTo/hass-plex-cast-control/issues",
   "dependencies": ["cast"],
-  "codeowners": [],
+  "codeowners": ["@RoLoTo"],
   "iot_class": "local_push",
   "config_flow": true
 }
