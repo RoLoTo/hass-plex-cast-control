@@ -1,0 +1,24 @@
+next:
+  name: Next
+  description: Send Plex Cast next-track command to a Chromecast running Plex.
+  fields:
+    entity_id:
+      name: Entity
+      description: Cast media player entity, for example media_player.your_cast_device.
+      required: true
+      selector:
+        entity:
+          domain: media_player
+
+previous:
+  name: Previous
+  description: Send Plex Cast previous-track command to a Chromecast running Plex.
+  fields:
+    entity_id:
+      name: Entity
+      description: Cast media player entity, for example media_player.your_cast_device.
+      required: true
+      selector:
+        entity:
+          domain: media_player
+

@@ -1,0 +1,6 @@
+{
+  "name": "Plex Cast Control",
+  "render_readme": true,
+  "domains": ["plex_cast_control"],
+  "homeassistant": "2024.6.0"
+}
